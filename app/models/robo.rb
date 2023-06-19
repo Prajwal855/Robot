@@ -1,0 +1,2 @@
+class Robo < ApplicationRecord
+end
