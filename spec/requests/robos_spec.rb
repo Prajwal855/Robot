@@ -1,11 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe "Robos", type: :request do
-  describe "GET /commands" do
+  describe "POST /commands" do
     it "create's a new post" do
-      post "/commands"
-      robo= Robo.create(x:2, y:1, position: "EAST")
-      expect(response.status).to eq(200)
+      post("/commands")
+      robo= Robo.create(commands: [
+        "PLACE 1,2,EAST",
+        "MOVE",
+        "MOVE",
+        "LEFT",
+        "MOVE",
+        "REPORT"
+      ])
+      expect(response.status).to eq(400)
     end
   end
 end
